@@ -1,518 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Gadget Prompts SD</title>
-  <link rel="icon" type="image/png" href="icono.png">
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="/style.css" crossorigin="anonymous">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Gadget Prompts SD - Pro & Cinemáticas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-  <body>
-
-
-
-    <div class="container">
-      <div>
-        <h1>Gadget Prompts SD</h1>
-
-    <h5>1 - Rellenar los campos con las ideas propuestas en cada uno</h5></div>
-
-        <ul class="list-group">
-          <li class="list-group-item col-md-12">
-            <form>
-              <label for="subject">Asuntos</label>
-              <br>
-    <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('(masterpieces)')">Masterpieces</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('(best quality)')">Best quality</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('(ultra-detailed)')">Ultra-Detailed</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('matiaskas')">Matiaskas</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('dana')">Dana</button>
-
-
-      <button class="tag-button" type="button" onclick="agregarTexto('Chico')">chico</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('chica')">chica</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('señor')">señor</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('señora')">señora</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('novia')">novia</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('policia')">Policia</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('abuelo')">abuelo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('abuela')">abuela</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('bebe')">bebe</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('trabajador')">trabajador</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('reina')">reina</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('angel')">angel</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('embarazada')">embarazada</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('familia')">familia</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('bailarines')">bailarines</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('1')">1</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('2')">2</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('3')">3</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('4')">4</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('5')">5</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('6')">6</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('7')">7</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('8')">8</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('9')">9</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('0')">0</button>
-
-      <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-
-    </form>      
-</li>
-      <li class="list-group-item col-md-12">
-            <label for="action">Acciónes</label>
-            <br>
-          <form>
-
-<button class="tag-button" type="button" onclick="agregarTexto('pelota de futbol')">&#9917;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('golf')">&#9971;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('velero')">&#9973;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('bañera')">&#128704;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('dormir')">&#128716;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('voltereta vertical')">&#129336;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('besar con amor')">&#128536;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('remar')">&#128675;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('feliz')">&#128515;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('cohete')">&#128640;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('saludo')">&#128075;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('risa')">&#128516;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('fantasma')">&#128123;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('fuego')">&#128293;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('corazon')">&#128151;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('apuntar')">&#128073;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('aplauso')">&#128079;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('victoria')">&#9996;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('escribir')">&#9997;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('fuerza')">&#128170;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('me gusta')">&#128077;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('regio')">&#128076;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('Correr')">&#127939;</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('Bailar')">Bailar</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('Posar')">Posar</button>
-          <button class="tag-button" type="button" onclick="agregarTexto('Caminar')">Caminar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Saltar')">Saltar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Nadar')">Nadar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Cantar')">Cantar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Leer')">Leer</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Estudiar')">Estudiar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Trabajar')">Trabajar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Cocinar')">Cocinar</button>
-
-            <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>  
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="context">Contexto</label>
-            <br>
-            <form>
-
-<button class="tag-button" type="button" onclick="agregarTexto('Films')">Films</button>
-
-<button class="tag-button" type="button" onclick="agregarTexto('marina')">&#9875;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('playa')">&#9969;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('casa')">&#127968;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('&#127969;')">&#127969;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('hospital')">&#127971;</button>
-<button class="tag-button" type="button" onclick="agregarTexto('departamentos')">&#127974;</button>
-
-
-<button class="tag-button" type="button" onclick="agregarTexto('fabrica')">&#127981;</button>
-
-
-     <button class="tag-button" type="button" onclick="agregarTexto('palmeras')">&#127965;</button>
-
-
-<button class="tag-button" type="button" onclick="agregarTexto('Entorno familiar, actividades diarias en casa')">Hogar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('trabajo')">Trabajo</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Compras, shopping')">Compras</button>
-<button class="tag-button" type="button" onclick="agregarTexto('bienestar mental')">bienestar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('ver películas')">Peliculas</button>
-<button class="tag-button" type="button" onclick="agregarTexto('entretenimiento')">Recreación</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Experiencias relacionadas con la preparación y el consumo de alimentos')">Alimentación</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un aula de clases')">Educativo</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Una oficina')">Laboral</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Una fiesta')">Social</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Una cena en casa')">Familiar</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un estadio')">Deportivo</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un hospital')">Médico</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un aeropuerto')">Viaje</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un estudio de arte')">artístico</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Una conferencia sobre tecnología')">tecnológico</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un parque nacional')">natural</button>
-
-<button class="tag-button" type="button" onclick="agregarTexto('área de recepción o entrada de un edificio')">Vestíbulo o entrada</button>
-<button class="tag-button" type="button" onclick="agregarTexto('sala de reuniones')">Salas de reuniones</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Espacio donde se realizan las tareas diarias y se lleva a cabo el trabajo')">Área de trabajo</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Cafetería')">Cafetería</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un espacio para relajarse')">Sala de descanso</button>
-<button class="tag-button" type="button" onclick="agregarTexto('sala de conferencias')">Sala de conferencias</button>
-<button class="tag-button" type="button" onclick="agregarTexto('donde se muestran productos, muestras o exposiciones')">Área de exhibición</button>
-<button class="tag-button" type="button" onclick="agregarTexto('donde se atienden consultas, quejas o brinda asistencia')">Área de atención al cliente</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Un espacio dedicado a actividades recreativas, como juegos o ejercicios')">Zona de recreación</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Oficinas')">Oficinas</button>
-
-              <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-
-    </form>
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="environment">Entorno</label>
-            <br>
-            <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una ciudad con rascacielos, calles transitadas, automóviles, edificios comerciales y residenciales')">urbano</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Un pueblo o zona rural con paisajes naturales, granjas, campos de cultivo y tranquilidad')">rural</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una playa con arena, agua salada, olas, embarcaciones y vida marina')">marino</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una región montañosa con picos elevados, senderos para caminatas, bosques frondosos y vistas panorámicas')">montañoso</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una selva tropical con densa vegetación, árboles altos, cascadas y una gran diversidad de especies')">selvático</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una región polar con hielo, glaciares, témpanos de hielo, fauna ártica y condiciones extremas de frío')">ártico</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Un desierto con dunas de arena, cactus, clima seco y altas temperaturas')">desértico</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Un área residencial en las afueras de la ciudad, con casas unifamiliares, jardines y un ambiente más tranquilo')">suburbano</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Una zona con fábricas, maquinaria pesada, chimeneas y actividades relacionadas con la producción y manufactura')">industrial</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Un espacio digital o en línea, como un sitio web, una plataforma de redes sociales o un videojuego en línea')">virtual</button>
-
-              <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="lightning">Iluminación</label>
-            <br>
-            <form>
-<button class="tag-button" type="button" onclick="agregarTexto('Dramatic Lighting')">Dramatic Lighting</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Backlighting')">Backlighting</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Golden Hour')">Golden Hour</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Studio Lighting')">Studio Lighting</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Studio Lighting')">Studio Lighting</button>
-
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Ambiente')">Ambiente</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Neón')">Neón</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Brumosa')">Brumosa</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Isométricas')">Isométricas</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Cientificas')">Cientificas</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Direccional')">Direccional</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Puntual')">Puntual</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz Area')">Area</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Luz HDR')">HDR</button>
-
-      <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>
-
-
-
-          </li>
-          <li class="list-group-item col-md-12">
-            <label for="artist">Artista Pictorico</label>
-            <br>
-            <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Pablo Picasso')">Pablo Picasso</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Frida Kahlo')">Frida Kahlo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Salvador Dalí')">Salvador Dalí</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Diego Rivera')">Diego Rivera</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Vincent van Gogh')">Vincent van Gogh</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Leonardo da Vinci')">Leonardo da Vinci</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Miguel Ángel')">Miguel Ángel</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Rembrandt')">Rembrandt</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Claude Monet')">Claude Monet</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Francisco de Goya')">Francisco de Goya</button>
-
-      <br>
-      <label for="artist">Artista Digital</label>
-      <br>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Beeple')">Beeple</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Hackatao')">Hackatao</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Karla Ortiz')">Karla Ortiz</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Mark Klink Digital Art')">Mark Klink Digital Art</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Blacke Kathryn')">Blacke Kathryn</button>
-
-      <br>
-      <label for="artist">Artista Fotograficos</label>
-      <br>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Ansel Adams')">Ansel Adams</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Steve McCurry')">Steve McCurry</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Annie Leibovitz')">Annie Leibovitz</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Sebastião Salgado')">Sebastião Salgado</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Dorothea Lange')">Dorothea Lange</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Henri Cartier-Bresson')">Henri Cartier-Bresson</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Robert Capa')">Robert Capa</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Helmut Newton')">Helmut Newton</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Cindy Sherman')">Cindy Sherman</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('inspirado en Richard Avedon')">Richard Avedon</button>
-
-              <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>
-
-          </li>
-          <li class="list-group-item col-md-12">
-            <label for="style">Prost-Proceso</label>
-            <br>
-             <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('Reducción de ruido')">Reducción de ruido</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('larga exposición')">larga exposición</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('monocromo')">monocromo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Enfoque')">Enfoque</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('ojo de pez')">ojo de pez</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Retoque de piel')">Retoque de piel</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('desenfoque')">Desenfoque</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Vignette')">Vignette</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('DSLR')">DSLR</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('B&N')">B&N</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Corrección de color')">Corrección de color</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Grano de película')">Grano de película</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('DOF')">DOF</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Aberración Cromática')">Aberración Cromática</button>
-
-               <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>
-
-          </li>
-          <li class="list-group-item col-md-12">
-            <label for="medium">Estilo artístico</label>
-            <br>
-            <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('Realismo')">Realismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Impresionismo')">Impresionismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Cubismo')">Cubismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Expresionismo')">Expresionismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Surrealismo')">Surrealismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Pop art')">Pop art</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('manga')">manga</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('fantasía')">fantasía</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('minimalismo')">minimalismo</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('abstracto')">abstracto</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('grafiti')">grafiti</button>
-
-<button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-    </form>
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="type">Comidas</label>
-            <br>
-            <form>
-
-      <button class="tag-button" type="button" onclick="agregarTexto('pizza')">pizza</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Nuggets')">Nuggets</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Papa Fritas')">Papa Fritas</button>
-<button class="tag-button" type="button" onclick="agregarTexto('pan')">Pan</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Helado')">Helado</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Mariscos')">Mariscos</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Leche')">Leche</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Donas')">Donas</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Pastel')">Pastel</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Frutilla')">Frutilla</button>
-
-              <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-        </form>  
-          </li>
-
-
-
-          <li class="list-group-item col-md-12">
-            <label for="type">Miscelanea</label>
-            <br>
-            <form>
-<button class="tag-button" type="button" onclick="agregarTexto('Reloj')">reloj</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Café')">cafe</button>
- <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-
-            </form>
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="type">Animales</label>
-            <br>
-            <form>
-
-      <button class="tag-button" type="button" onclick="agregarTexto('perro')">perro</button>
-<button class="tag-button" type="button" onclick="agregarTexto('gato')">gato</button>
-<button class="tag-button" type="button" onclick="agregarTexto('pollo')">pollo</button>
-<button class="tag-button" type="button" onclick="agregarTexto('rata')">rata</button>
-<button class="tag-button" type="button" onclick="agregarTexto('vaca')">vaca</button>
-<button class="tag-button" type="button" onclick="agregarTexto('tigre')">tigre</button>
-<button class="tag-button" type="button" onclick="agregarTexto('caracol')">caracol</button>
-<button class="tag-button" type="button" onclick="agregarTexto('elefante')">elefante</button>
-
-        <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-        </form>  
-          </li>
-
-          <li class="list-group-item col-md-12">
-            <label for="color-scheme">Color</label>
-            <br>
-            <form>
-<button class="tag-button" type="button" onclick="agregarTexto('Pastel color')">Pastel Color</button>
-<button class="tag-button" type="button" onclick="agregarTexto('black and white')">Black and White</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Muted Color')">Muted Color</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Warm Color')">Warm Color</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Cool Color')">Cool Color</button>
-<button class="tag-button" type="button" onclick="agregarTexto('Vibrant Color')">Vibrant Color</button>
-
-              <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
+<body>
+  <div class="glass-container">
+    <header>
+      <h1>
+        <span class="gradient-text">Gadget Prompts SD</span>
+      </h1>
+      <p class="subtitle">Generador Profesional de Prompts Hiperrealistas y Cinemáticos</p>
+    </header>
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('image')">Prompt de Imagen</button>
+      <button class="tab-btn" onclick="switchTab('cinematic')">Prompt Cinemática</button>
+    </nav>
+    <main>
+      <!-- TAB 1: Prompt de Imagen -->
+      <section id="tab-image" class="tab-section">
+        <form id="prompt-form-image">
+          <label for="inputPromptImage">Describe tu escena o idea visual:</label>
+          <textarea id="inputPromptImage" rows="4" placeholder="Ejemplo: Un bosque al atardecer con niebla..."></textarea>
+          <button type="submit" class="primary-btn">Generar Prompt Profesional</button>
         </form>
-
-          </li>
-          <li class="list-group-item col-md-12">
-            <label for="computer-graphics">Gráficos</label>
-            <br>
-            <form>
-      <button class="tag-button" type="button" onclick="agregarTexto('Lumion')">Lumion</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('V-Ray')">V-Ray</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('3ds Max')">3ds Max</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Octane Render')">Octane Render</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Maxwell Render')">Maxwell Render</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Revit')">Revit</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Blender Cycles')">Blender Cycles</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Sketchup')">Sketchup</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Indigo Renderer')">Indigo Renderer</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Cinema 4D')">Cinema 4D</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('unreal')">unreal</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Twinmotion')">Twinmotion</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('KeyShot')">KeyShot</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('QooCam3D')">QooCam3D</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Unity engine')">Unity engine</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('POV-Ray')">POV-Ray</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('iRay')">iRay</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('FinalRender')">FinalRender</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Mitsuba')">Mitsuba</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Appleseed')">Appleseed</button>
-
-        <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
+        <section class="examples-section">
+          <h3>Ejemplos de Prompt Profesional</h3>
+          <ul id="examples-list-image"></ul>
+        </section>
+        <section id="result-section-image" class="hidden">
+          <h2>Prompt Profesional</h2>
+          <div id="outputPromptImage" class="output-prompt"></div>
+          <button class="copy-btn" onclick="copyPrompt('outputPromptImage', this)">Copiar Prompt</button>
+        </section>
+      </section>
+      <!-- TAB 2: Prompt Cinemática -->
+      <section id="tab-cinematic" class="tab-section hidden">
+        <form id="prompt-form-cinematic">
+          <label for="inputPromptCinematic">Describe tu escena o secuencia cinematográfica:</label>
+          <textarea id="inputPromptCinematic" rows="4" placeholder="Ejemplo: Un plano secuencia de un héroe entrando a una ciudad futurista bajo la lluvia..."></textarea>
+          <button type="submit" class="primary-btn">Generar Prompt Cinemático</button>
         </form>
-
-          </li>
-          <li class="list-group-item col-md-12">
-            <label for="quality">Calidad</label>
-            <br>
-            <form>
-              <button class="tag-button" type="button" onclick="agregarTexto('Sony Alpha a7R IV')">Sony Alpha a7R IV</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Canon EOS 5D Mark IV')">Canon EOS 5D Mark IV</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Nikon D850')">Nikon D850</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Fujifilm X-T4')">Fujifilm X-T4</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Sony Alpha a9 II')">Sony Alpha a9 II</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Canon EOS R5')">Canon EOS R5</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Nikon Z7 II')">Nikon Z7 II</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Panasonic Lumix DC-S1R')">Panasonic Lumix DC-S1R</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Leica Q2')">Leica Q2</button>
-              <button class="tag-button" type="button" onclick="agregarTexto('Olympus OM-D E-M1 Mark III')">Olympus OM-D E-M1 Mark III</button>
-
-      <button class="tag-button" type="button" onclick="agregarTexto('Alta resolución')">Alta resolución</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Baja resolución')">Baja resolución</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Densidad de píxeles')">Densidad de píxeles</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Píxeles totales')">Píxeles totales</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Resolución estándar')">Resolución estándar</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('HD ')">HD </button>
-      <button class="tag-button" type="button" onclick="agregarTexto('16 Bit ')">16 Bit </button>
-      <button class="tag-button" type="button" onclick="agregarTexto('4:3 ')">4:3 </button>
-      <button class="tag-button" type="button" onclick="agregarTexto('16:9 ')">16:9 </button>
-      <button class="tag-button" type="button" onclick="agregarTexto('50 mm ')">50 mm </button>
-              <button class="tag-button" type="button" onclick="agregarTexto('85 mm ')">85 mm </button>
-      <button class="tag-button" type="button" onclick="agregarTexto('Full HD')">Full HD</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('2k')">2k</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('4k')">4k</button>
-      <button class="tag-button" type="button" onclick="agregarTexto('8k')">8k</button>
-
-      <button class="tag-button" type="button" onclick="agregarTexto(',')">,</button>
-
-
-    </form>
-           <input type="text" id="subject">
-          </li>
-
-
-<script>
-    // Función para agregar texto al campo de texto después de una coma
-    function agregarTexto(texto) {
-        var subject = document.getElementById('subject');
-        if (subject.value === '') {
-            subject.value += texto;
-        } else {
-            subject.value += ' ' + texto;
-        }
-    }
-</script>
-
-        </ul>
-
-
-      <div class="preview-section">
-        <h5>Vista previa del prompt</h5>
-        <div id="preview" class="preview-box"></div>
-      </div>
-
-      <h5>2 - Generar prompt final</h5>
-      <button type="button" class="generate-button" onclick="generateResult()">
-        <span class="button-icon">⚡</span>
-        Generar Prompt
-      </button>
-
-    <p id="result"></p>
-
-    <h5>3 - Copiar el resultado en los prompts de Stable Duffusion</h5>
-    <button type="button" onclick="copyResult()">Copia Resultado</button>
-    </form>
-      <br>
-      <br>
-
-
-      <ul class="list-group">
-         <li class="list-group-item col-md-12">
-<section>
-    <h2>Negative Prompts:</h2>
-    <button onclick="mostrarRespuesta('unnatural, unrealistic, cartoon, illustration, painting, drawing, unreal engine, black and white (optional), monochrome (optional), oversaturated, low saturation, surreal, underexposed, overexposed, jpeg artifacts, conjoined, aberrations, multiple levels, harsh lighting, anime, sketches, twisted, video game, photoshop, creative, UI, abstract, collapsed, rotten, extra windows')">photorealistic photos</button>
-    <button onclick="mostrarRespuesta('disfigured, disproportionate, bad anatomy, bad proportions, ugly, out of frame, mangled, asymmetric, cross-eyed, depressed, immature, stuffed animal, out of focus, high depth of field, cloned face, cloned head, age spot, skin blemishes, collapsed eyeshadow, asymmetric ears, imperfect eyes, floating hair (optional), unnatural, conjoined, missing limb, missing arm, missing leg, poorly drawn face, poorly drawn feet, poorly drawn hands, floating limb, disconnected limb, extra limb, malformed limbs, malformed hands, poorly rendered face, poor facial details, poorly rendered hands, double face, unbalanced body, unnatural body, lacking body, childish (optional), long body, cripple, old, fat, cartoon, 3D, weird colors, unnatural skin tone, unnatural skin, stiff face, fused hand, skewed eyes, mustache (optional), beard (optional), surreal, cropped head, group of people')">portrait shots of people and pets</button>
-    <button onclick="mostrarRespuesta('bad art, photorealistic, realism, realistic, stock image, stock photo, bad fan art, lazy art, text, stacked background, noise, poor detailing, human (optional), inaccurate trees, inaccurate sky, 3D, render, CGI, unsmooth, unprofessional, bad artist, less creative, lowres, grainy')">paintings, drawings, and illustrations</button>
-    <button onclick="mostrarRespuesta('oversaturated, low contrast, underexposed, overexposed, lowres, low quality, people (optional), pets (optional), cars (optional), animals (optional), solid background, plain background, asymmetrical buildings, jpeg artifacts, close-up, macro, surreal, multiple views, multiple angles, creepy, scary, blurry, grainy, unreal sky, weird colors, deformed structures')">cityscapes and street views</button>
-  <button onclick="mostrarRespuesta('plain background, boring, plain, standard, homogenous, uncreative, unattractive, opaque, grayscale (optional), monochrome (optional), distorted details, details are low, grains, grainy, foggy (optional), dark (optional), blurry, portrait, oversaturated, low contrast, underexposed, overexposed, lowres, low quality, close-up, macro, surreal, multiple views, multiple angles')">landscapes</button>
-  <button onclick="mostrarRespuesta('ugly, tiling, disfigured, deformed, low quality, pixelated, blurry, grains, grainy, text, watermark, signature, out of frame, disproportioned, bad proportions, gross proportions, bad anatomy, body out of frame, duplicate, cropped, cut off, draft, extra hands, extra arms, extra legs, extra fingers, extra limbs, long neck, mutation, mutilated, mutated hands, poorly drawn face, poorly drawn feet, poorly drawn hands, missing hands, missing arms, missing legs, missing fingers, fused fingers, unnatural pose, out of frame, low resolution, morbid, blank background, boring background, render, unreal engine')">better images</button>
-  <button onclick="mostrarRespuesta('((disfigured)), ((bad art)), ((deformed)),((extra limbs)),((close up)),((b&w)), wierd colors, blurry, (((duplicate))), ((morbid)), ((mutilated)), [out of frame], (((extra fingers, mutated hands))), ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), Photoshop, video game, ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, mutation, mutated, extra limbs, extra legs, extra arms, disfigured, deformed, cross-eye, body out of frame, blurry, bad art, bad anatomy, watermark, logo, words, text, ugly, low quality, bad art, jpeg artifact, missing limbs, ugly woman, masculine, bad anatomy, text, sign, hands, uneven nostrils, (((multiple people, group of people, simultaneous)))')">More better images</button>
-
-    <div>
-      <textarea id="respuesta" readonly></textarea>
-    </div>
-    <button onclick="copiarTexto()">Copiar Negative</button>
-  </section>
-         </li>
-      </ul>
-
-      <br>
-      <b>Desarrollado por Matias Kas</b>
-      <br>
-      <br>
-
-
-
-      <script src="script.js"></script>
-
-    </div>
-
-
-  </body>
-
+        <section class="examples-section">
+          <h3>Ejemplos de Prompt Cinemática</h3>
+          <ul id="examples-list-cinematic"></ul>
+        </section>
+        <section id="result-section-cinematic" class="hidden">
+          <h2>Prompt Cinemática</h2>
+          <div id="outputPromptCinematic" class="output-prompt"></div>
+          <button class="copy-btn" onclick="copyPrompt('outputPromptCinematic', this)">Copiar Prompt</button>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <small>Creado por <a href="https://github.com/bocanada69" target="_blank">@bocanada69</a></small>
+    </footer>
+  </div>
+  <script src="main.js"></script>
+</body>
 </html>
