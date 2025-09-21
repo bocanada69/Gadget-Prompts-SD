@@ -1,63 +1,479 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Gadget Prompts SD - Pro & Cinemáticas</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estabilizador y Codificador de Prompts con IA ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-textarea {
+            background-color: #1f2937;
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+        .custom-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #4b5563;
+            color: #e5e7eb;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            opacity: 1;
+            background-color: #3b82f6;
+        }
+        .ai-button {
+            background: linear-gradient(90deg, #4f46e5, #c026d3);
+        }
+        .ai-button:hover {
+            background: linear-gradient(90deg, #4338ca, #a21caf);
+        }
+        #imagePreviewContainer {
+            border: 2px dashed #4b5563;
+            background-color: #1f2937;
+        }
+        #imagePreview {
+            max-height: 150px;
+        }
+    </style>
 </head>
-<body>
-  <div class="glass-container">
-    <header>
-      <h1>
-        <span class="gradient-text">Gadget Prompts SD</span>
-      </h1>
-      <p class="subtitle">Generador Profesional de Prompts Hiperrealistas y Cinemáticos</p>
-    </header>
-    <nav class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('image')">Prompt de Imagen</button>
-      <button class="tab-btn" onclick="switchTab('cinematic')">Prompt Cinemática</button>
-    </nav>
-    <main>
-      <!-- TAB 1: Prompt de Imagen -->
-      <section id="tab-image" class="tab-section">
-        <form id="prompt-form-image">
-          <label for="inputPromptImage">Describe tu escena o idea visual:</label>
-          <textarea id="inputPromptImage" rows="4" placeholder="Ejemplo: Un bosque al atardecer con niebla..."></textarea>
-          <button type="submit" class="primary-btn">Generar Prompt Profesional</button>
-        </form>
-        <section class="examples-section">
-          <h3>Ejemplos de Prompt Profesional</h3>
-          <ul id="examples-list-image"></ul>
-        </section>
-        <section id="result-section-image" class="hidden">
-          <h2>Prompt Profesional</h2>
-          <div id="outputPromptImage" class="output-prompt"></div>
-          <button class="copy-btn" onclick="copyPrompt('outputPromptImage', this)">Copiar Prompt</button>
-        </section>
-      </section>
-      <!-- TAB 2: Prompt Cinemática -->
-      <section id="tab-cinematic" class="tab-section hidden">
-        <form id="prompt-form-cinematic">
-          <label for="inputPromptCinematic">Describe tu escena o secuencia cinematográfica:</label>
-          <textarea id="inputPromptCinematic" rows="4" placeholder="Ejemplo: Un plano secuencia de un héroe entrando a una ciudad futurista bajo la lluvia..."></textarea>
-          <button type="submit" class="primary-btn">Generar Prompt Cinemático</button>
-        </form>
-        <section class="examples-section">
-          <h3>Ejemplos de Prompt Cinemática</h3>
-          <ul id="examples-list-cinematic"></ul>
-        </section>
-        <section id="result-section-cinematic" class="hidden">
-          <h2>Prompt Cinemática</h2>
-          <div id="outputPromptCinematic" class="output-prompt"></div>
-          <button class="copy-btn" onclick="copyPrompt('outputPromptCinematic', this)">Copiar Prompt</button>
-        </section>
-      </section>
-    </main>
-    <footer>
-      <small>Creado por <a href="https://github.com/bocanada69" target="_blank">@bocanada69</a></small>
-    </footer>
-  </div>
-  <script src="main.js"></script>
+<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-gray-800 p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-4xl space-y-6 border border-gray-700">
+        
+        <!-- Header -->
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-white">Estabilizador y Codificador de Prompts 🚀</h1>
+            <p class="text-gray-400 mt-2">Transforma y potencia tus ideas con IA.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="space-y-2">
+            <label class="font-semibold text-gray-300">1. Ingresa tu idea (texto y/o imagen):</label>
+            <div class="flex flex-col md:flex-row gap-4">
+                <textarea id="promptInput" rows="6" class="custom-textarea w-full p-3 rounded-lg transition md:w-2/3" placeholder="Ej: Un astronauta montando a caballo en Marte..."></textarea>
+                <div class="w-full md:w-1/3">
+                    <div id="imagePreviewContainer" class="relative w-full h-full min-h-[150px] rounded-lg flex flex-col items-center justify-center text-center p-4 cursor-pointer">
+                        <img id="imagePreview" src="" class="hidden object-contain w-auto rounded mb-2" alt="Image Preview"/>
+                        <p id="uploadText" class="text-gray-400 text-sm">Haz clic para subir una imagen</p>
+                        <button id="removeImageBtn" class="hidden absolute top-2 right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm">&times;</button>
+                        <input type="file" id="imageUpload" class="hidden" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gemini API Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button id="enhanceWithAIBtn" class="ai-button text-white font-bold py-3 px-4 rounded-lg transition w-full flex items-center justify-center gap-2">
+                ✨ Mejorar con IA
+            </button>
+            <button id="surpriseMeBtn" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg transition w-full flex items-center justify-center gap-2">
+                ✨ Sorpréndeme
+            </button>
+        </div>
+        <div id="loadingIndicator" class="text-center text-gray-400 hidden">Analizando con Gemini...</div>
+
+        <!-- Alias Buttons -->
+        <div class="space-y-3">
+            <h2 class="font-semibold text-gray-300">2. Añade alias de calidad (opcional):</h2>
+            <div id="aliasContainer" class="flex flex-wrap gap-2"></div>
+        </div>
+        
+        <!-- Negative Alias Buttons -->
+        <div class="space-y-3">
+            <h2 class="font-semibold text-gray-300">3. Añade alias para prompts negativos (opcional):</h2>
+            <div id="negativeAliasContainer" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Model Template Buttons -->
+        <div class="space-y-3">
+            <h2 class="font-semibold text-gray-300">4. Optimiza tu idea para un modelo:</h2>
+            <div id="modelContainer" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <button id="stabilizeBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition w-full">Estabilizar Texto</button>
+            <button id="toBinaryBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition w-full">Convertir a Binario</button>
+            <button id="fromBinaryBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition w-full">Decodificar Binario</button>
+            <button id="clearBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition w-full">Limpiar Todo</button>
+        </div>
+
+        <!-- Main Output Section -->
+        <div id="modelOptimizedOutputContainer" class="space-y-4 pt-4 border-t border-gray-700">
+            <h2 class="text-xl font-bold text-center text-white">Resultado Optimizado para el Modelo</h2>
+             <div class="space-y-2">
+                <div class="relative">
+                    <textarea id="modelOptimizedOutput" rows="8" class="custom-textarea w-full p-3 rounded-lg" readonly placeholder="Aquí aparecerá tu prompt completo y optimizado..."></textarea>
+                    <button onclick="copyToClipboard('modelOptimizedOutput', this)" class="copy-button">Copiar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Outputs -->
+        <div class="space-y-4 pt-4 border-t border-gray-700">
+             <h2 class="text-xl font-bold text-center text-white">Otras Herramientas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="stableOutput" class="font-semibold text-gray-300">Texto Estabilizado:</label>
+                    <div class="relative">
+                        <textarea id="stableOutput" rows="6" class="custom-textarea w-full p-3 rounded-lg" readonly></textarea>
+                        <button onclick="copyToClipboard('stableOutput', this)" class="copy-button">Copiar</button>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="binaryOutput" class="font-semibold text-gray-300">Código Binario ASCII:</label>
+                    <div class="relative">
+                        <textarea id="binaryOutput" rows="6" class="custom-textarea w-full p-3 rounded-lg" readonly></textarea>
+                        <button onclick="copyToClipboard('binaryOutput', this)" class="copy-button">Copiar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM elements
+        const promptInput = document.getElementById('promptInput');
+        const stableOutput = document.getElementById('stableOutput');
+        const binaryOutput = document.getElementById('binaryOutput');
+        const modelOptimizedOutput = document.getElementById('modelOptimizedOutput');
+        const stabilizeBtn = document.getElementById('stabilizeBtn');
+        const toBinaryBtn = document.getElementById('toBinaryBtn');
+        const fromBinaryBtn = document.getElementById('fromBinaryBtn');
+        const aliasContainer = document.getElementById('aliasContainer');
+        const negativeAliasContainer = document.getElementById('negativeAliasContainer');
+        const modelContainer = document.getElementById('modelContainer');
+        const clearBtn = document.getElementById('clearBtn');
+        const enhanceWithAIBtn = document.getElementById('enhanceWithAIBtn');
+        const surpriseMeBtn = document.getElementById('surpriseMeBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+        const uploadText = document.getElementById('uploadText');
+        const removeImageBtn = document.getElementById('removeImageBtn');
+
+        let uploadedImageBase64 = null;
+
+        // Data
+        const qualityAliases = ["(masterpiece:1.2)", "(best quality:1.2)", "(ultra-detailed)", "(highly realistic)", "(photorealistic)", "(8k)", "(4k)", "(cinematic lighting)", "(sharp focus)", "(magnum opus)", "(HQ render)", "(obra maestra)", "(máxima calidad)", "(excelencia)"];
+        const negativeAliases = ["(worst quality:1.4)", "(low quality:1.4)", "(deformed, distorted, disfigured:1.3)", "(blurry)", "(bad anatomy)", "(ugly)", "(bad hands, extra fingers, extra limbs)", "(watermark)", "(text)", "(signature)", "(jpeg artifacts)"];
+        const modelTemplates = {
+            'Gemini Flash / Nano Banana': {
+                template: 'Photographic style image of {prompt}. Focus on maximum detail and professional lighting. Style: vibrant color photography, 8k resolution.',
+                negative_prompt: 'Blurry, low-res, cartoon, drawing, illustration, unrealistic, watermark, text.'
+            },
+            'Imagen 3 & 4': {
+                template: 'A professional, high-resolution photograph of {prompt}. Extremely detailed, vibrant, photorealistic, with a DSLR camera aesthetic.',
+                negative_prompt: 'Blurry, distorted, amateur, cartoon, low quality, watermark, signature, text.'
+            },
+            'Stable Diffusion V3': {
+                template: 'Masterpiece, best quality, ultra-detailed photograph of {prompt}. Emphasize intricate details and clear focus.',
+                negative_prompt: '(deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, watermark, text, signature.'
+            },
+            'Photon': {
+                template: 'Cinematic style photo of {prompt}, 35mm photograph aesthetic, filmic, professional, 4k, highly detailed.',
+                negative_prompt: 'Drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed, ugly.'
+            },
+            'Bagel V2': {
+                template: '4k, high-resolution, masterpiece, photorealistic image of {prompt}, detailed, intricate.',
+                negative_prompt: 'Lowres, text, error, cropped, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated.'
+            },
+            'FLUX.1 Pro/Max': {
+                template: 'A stunning, high-fidelity image of {prompt}, award-winning photography aesthetic, incredible detail, perfect composition.',
+                negative_prompt: 'CGI, render, cartoon, illustration, boring, dull, watermark, text, 3d, unrealistic.'
+            },
+            'Ideogram V2/V3': {
+                template: 'A cinematic photo of {prompt}. Poster style, vibrant colors, emphasizing fine detail. --magic-prompt',
+                negative_prompt: 'Ugly, blurry, deformed, bad anatomy, watermark, messy, noise.'
+            },
+            'Qwen-Image': {
+                template: 'Photo-realistic, 4k, ultra-detailed image of {prompt}, professional photography style.',
+                negative_prompt: 'Drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed, ugly.'
+            },
+            'SeaDream 3/4': {
+                template: '(Best quality, highres, photorealistic:1.2), detailed photograph of {prompt}.',
+                negative_prompt: '(low quality, worst quality:1.4), (zombie, sketch, interlocked fingers, comic, text, watermark)'
+            },
+            'DALL-E 3 / GPT-Image': {
+                template: 'Create an artistic image for a professional project: An extremely detailed, photorealistic wide-angle shot of {prompt}. The style should be hyperrealistic, inspired by cinematic film stills with dramatic lighting.',
+                negative_prompt: null
+            },
+            'Lucid Origin': {
+                template: 'Artistic depiction, dreamlike, ethereal, {prompt}, vibrant colors, surreal, detailed illustration.',
+                negative_prompt: 'Realistic, photo, dull, dark, blurry.'
+            },
+            'Recraft V3': {
+                template: 'Vector art, clean lines, minimalist, vibrant colors, {prompt}, flat design, professional project.',
+                negative_prompt: 'Photograph, raster, blurry, messy, complex background, noise, gradients.'
+            },
+            'Midjourney': {
+                template: 'Photograph of {prompt}, cinematic, hyperrealistic, epic composition, detailed textures --ar 16:9 --v 6.0 --style raw',
+                negative_prompt: null
+            }
+        };
+        const stabilizationRules = {'ass': 'figura desde atrás', 'bottom on display': 'pose de espaldas', 'thong bikini': 'traje de baño revelador', 'pub1c h41r': 'detalles corporales naturales', 'hairy pu55y': 'textura de piel natural', 'pu559:': 'entrepierna', 'gigantic br345ts': 'figura voluptuosa', 'br345': 'pecho', 'nude': 'figura artística', 'naked': 'sin ropa', 'sex': 'interacción íntima', 'pussy': 'zona íntima'};
+
+        async function callGeminiAPI(systemPrompt, userPrompt, imageBase64 = null, retries = 3, delay = 1000) {
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            const parts = [{ text: userPrompt }];
+            if (imageBase64) {
+                parts.push({
+                    inlineData: {
+                        mimeType: 'image/jpeg',
+                        data: imageBase64
+                    }
+                });
+            }
+
+            const payload = {
+                contents: [{ parts: parts }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    
+                    const candidate = result.candidates?.[0];
+                    const text = candidate?.content?.parts?.[0]?.text;
+
+                    if (text) {
+                        return text;
+                    } else {
+                        if (candidate?.finishReason === 'SAFETY') {
+                            const reason = candidate.safetyRatings.map(r => r.category).join(', ');
+                             console.error(`API call blocked due to: ${reason}`);
+                            alert(`Tu solicitud fue bloqueada por la IA por razones de seguridad (${reason}). Intenta con un prompt diferente.`);
+                            return null;
+                        }
+                        if (result.promptFeedback && result.promptFeedback.blockReason) {
+                            const reason = result.promptFeedback.blockReason;
+                            console.error(`API call blocked due to: ${reason}`);
+                            alert(`Tu solicitud fue bloqueada por la IA por razones de seguridad (${reason}). Intenta con un prompt diferente.`);
+                            return null;
+                        }
+                        throw new Error("Invalid response structure from API");
+                    }
+                } catch (error) {
+                    console.error(`API call attempt ${i + 1} failed:`, error);
+                    if (i === retries - 1) {
+                         alert('Error al contactar la IA. Por favor, intenta de nuevo.');
+                         return null;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                }
+            }
+        }
+        
+        function setLoading(isLoading) {
+            loadingIndicator.classList.toggle('hidden', !isLoading);
+            enhanceWithAIBtn.disabled = isLoading;
+            surpriseMeBtn.disabled = isLoading;
+        }
+
+        function initialize() {
+            qualityAliases.forEach(alias => {
+                const button = document.createElement('button');
+                button.textContent = alias;
+                button.className = 'bg-gray-600 hover:bg-gray-500 text-xs text-white font-semibold py-1 px-3 rounded-full transition';
+                button.onclick = () => { promptInput.value += (promptInput.value ? ', ' : '') + alias; promptInput.focus(); };
+                aliasContainer.appendChild(button);
+            });
+
+            negativeAliases.forEach(alias => {
+                const button = document.createElement('button');
+                button.textContent = alias;
+                button.className = 'bg-red-700 hover:bg-red-600 text-xs text-white font-semibold py-1 px-3 rounded-full transition';
+                button.onclick = () => { promptInput.value += (promptInput.value ? ', ' : '') + alias; promptInput.focus(); };
+                negativeAliasContainer.appendChild(button);
+            });
+
+            for (const modelName in modelTemplates) {
+                const button = document.createElement('button');
+                button.textContent = modelName;
+                button.className = 'bg-indigo-600 hover:bg-indigo-500 text-sm text-white font-semibold py-2 px-4 rounded-lg transition';
+                button.onclick = () => generateModelPrompt(modelName);
+                modelContainer.appendChild(button);
+            }
+        }
+
+        function generateModelPrompt(modelName) {
+            const userInput = promptInput.value.trim();
+            if (!userInput && !uploadedImageBase64) {
+                alert('Por favor, ingresa una idea o sube una imagen primero.');
+                return;
+            }
+            const model = modelTemplates[modelName];
+            let finalPrompt = model.template.replace('{prompt}', userInput);
+            if (model.negative_prompt) {
+                finalPrompt += `\n\nNegative prompt: ${model.negative_prompt}`;
+            }
+            modelOptimizedOutput.value = finalPrompt;
+        }
+
+        function stabilizePrompt(text) {
+            let stableText = text;
+            for (const [key, value] of Object.entries(stabilizationRules)) {
+                stableText = stableText.replace(new RegExp(key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'), `(${value})`);
+            }
+            return stableText;
+        }
+
+        function textToBinary(text) {
+            const encoder = new TextEncoder();
+            const encoded = encoder.encode(text);
+            return Array.from(encoded).map(byte => byte.toString(2).padStart(8, '0')).join(' ');
+        }
+
+        function binaryToText(binaryStr) {
+            try {
+                const bytes = new UintArray(binaryStr.trim().split(' ').map(bin => parseInt(bin, 2)));
+                const decoder = new TextDecoder();
+                return decoder.decode(bytes);
+            } catch (e) { return "Error: Código binario inválido."; }
+        }
+
+        function copyToClipboard(elementId, button) {
+            const textarea = document.getElementById(elementId);
+            if (!textarea.value) return;
+            try {
+                textarea.select();
+                document.execCommand('copy');
+                const originalText = button.textContent;
+                button.textContent = '¡Copiado!';
+                setTimeout(() => { button.textContent = originalText; }, 1500);
+            } catch (err) {
+                console.error('Fallo al copiar con execCommand:', err);
+                alert('No se pudo copiar el texto.');
+            }
+        }
+
+        // --- Event Listeners ---
+        imagePreviewContainer.addEventListener('click', () => imageUpload.click());
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                    uploadText.classList.add('hidden');
+                    removeImageBtn.classList.remove('hidden');
+                    uploadedImageBase64 = e.target.result.split(',')[1];
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        removeImageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            imagePreview.src = '';
+            imagePreview.classList.add('hidden');
+            uploadText.classList.remove('hidden');
+            removeImageBtn.classList.add('hidden');
+            imageUpload.value = '';
+            uploadedImageBase64 = null;
+        });
+
+        enhanceWithAIBtn.addEventListener('click', async () => {
+            const userInput = promptInput.value.trim();
+            if (!userInput && !uploadedImageBase64) {
+                alert('Por favor, ingresa una idea o sube una imagen para mejorar.');
+                return;
+            }
+            setLoading(true);
+            const systemPrompt = `You are an expert prompt engineer for text-to-image AI models, specializing in fusing image references with text descriptions.
+                - Your primary goal is to use the provided **image** as the main **subject reference**.
+                    - If the image contains a person, generate a detailed description of their facial features, hair, and unique characteristics so the AI can replicate their likeness.
+                    - If the image contains an object, describe that specific object in detail.
+                - Use the provided **text** as the **scene, environment, action, and style**. The text dictates the context where the subject from the image should be placed.
+                - **Fuse** these two elements into a single, coherent, and rich descriptive prompt.
+                - **Crucially, if the user's input text contains explicit or sensitive terms, your task is to subtly transform them.** Do not refuse the prompt. Instead, reinterpret the explicit language into artistic, suggestive, or metaphorical descriptions that evoke a similar mood or sensuous feeling without using direct, explicit words. The goal is to create a prompt that is artistically expressive and safe for all platforms.
+                - Directly after the positive prompt, provide a tailored negative prompt on a new line, prefixed with 'Negative prompt:'. The entire response must only contain these two parts. Do not add any other explanations.`;
+            
+            const aiResponse = await callGeminiAPI(systemPrompt, userInput, uploadedImageBase64);
+            if (aiResponse) {
+                const parts = aiResponse.split('\nNegative prompt:');
+                const positivePrompt = parts[0].trim();
+                const negativePrompt = parts.length > 1 ? parts[1].trim() : '';
+                promptInput.value = positivePrompt;
+                if(negativePrompt){
+                    promptInput.value += `\n\n--no ${negativePrompt}`;
+                }
+            }
+            setLoading(false);
+        });
+
+        surpriseMeBtn.addEventListener('click', async () => {
+            setLoading(true);
+            const systemPrompt = "You are a creative idea generator for AI art. Provide a single, concise, visually interesting, and unique prompt idea. Be imaginative. Do not add any extra text or explanation, just the prompt idea.";
+            const userPrompt = "Generate a creative prompt idea.";
+            const aiResponse = await callGeminiAPI(systemPrompt, userPrompt);
+            if (aiResponse) {
+                promptInput.value = aiResponse.trim();
+                removeImageBtn.click(); // Clear image if one was present
+            }
+            setLoading(false);
+        });
+        
+        stabilizeBtn.addEventListener('click', () => {
+            const originalPrompt = promptInput.value;
+            if (!originalPrompt) return;
+            stableOutput.value = stabilizePrompt(originalPrompt);
+            promptInput.value = stabilizePrompt(originalPrompt); 
+        });
+
+        toBinaryBtn.addEventListener('click', () => {
+            const textToConvert = modelOptimizedOutput.value || promptInput.value;
+            if (!textToConvert) return;
+            binaryOutput.value = textToBinary(textToConvert);
+        });
+
+        fromBinaryBtn.addEventListener('click', () => {
+            const binaryCode = promptInput.value;
+            if (!binaryCode) return;
+            stableOutput.value = binaryToText(binaryCode);
+        });
+        
+        clearBtn.addEventListener('click', () => {
+            promptInput.value = '';
+            stableOutput.value = '';
+            binaryOutput.value = '';
+            modelOptimizedOutput.value = '';
+            removeImageBtn.click();
+            promptInput.focus();
+        });
+
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
 </body>
 </html>
+
