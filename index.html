@@ -268,6 +268,9 @@
                     if (text) {
                         return text;
                     } else {
+                        // Log the full response for easier debugging
+                        console.error("Unexpected API response structure:", JSON.stringify(result, null, 2));
+
                         if (candidate?.finishReason === 'SAFETY') {
                             const reason = candidate.safetyRatings.map(r => r.category).join(', ');
                              console.error(`API call blocked due to: ${reason}`);
@@ -280,18 +283,21 @@
                             alert(`Tu solicitud fue bloqueada por la IA por razones de seguridad (${reason}). Intenta con un prompt diferente.`);
                             return null;
                         }
-                        throw new Error("Invalid response structure from API");
+                        // The error that will be caught by the outer catch block
+                        throw new Error("Respuesta inválida de la API. La IA no generó texto. Esto puede deberse a que el prompt es muy complejo o hay un problema temporal con el servicio. Revisa la consola para más detalles.");
                     }
                 } catch (error) {
                     console.error(`API call attempt ${i + 1} failed:`, error);
                     if (i === retries - 1) {
-                         let errorMessage = 'Error al contactar la IA. Por favor, revisa tu conexión a internet e intenta de nuevo.';
+                         let userMessage;
                          if (error.message.includes('Failed to fetch')) {
-                            errorMessage += '\n\n(Detalle técnico: La solicitud de red falló. Esto puede deberse a un problema de conexión, un firewall o políticas de seguridad del navegador (CORS/CSP) que bloquean la llamada a la API de Google.)';
+                            userMessage = 'Error al contactar la IA. Por favor, revisa tu conexión a internet e intenta de nuevo.\n\n(Detalle técnico: La solicitud de red falló. Esto puede deberse a un problema de conexión, un firewall o políticas de seguridad del navegador que bloquean la llamada a la API de Google.)';
+                         } else if (error.message.includes('Respuesta inválida')) {
+                            userMessage = error.message; // Use the specific error message
                          } else {
-                            errorMessage += `\n\n(Detalle técnico: ${error.message})`;
+                            userMessage = `Error al contactar la IA: ${error.message}`;
                          }
-                         alert(errorMessage);
+                         alert(userMessage);
                          return null;
                     }
                     await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
